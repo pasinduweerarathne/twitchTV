@@ -32,11 +32,31 @@ class GoogleAuth extends Component {
   // Figure out if the user is currently singed in
   renderAuthButton() {
     if (this.state.isSignedIn === null) {
-      return <div>I don't know if I signed in</div>;
+      return null;
     } else if (this.state.isSignedIn) {
-      return <div>I am singed in!</div>;
+      return (
+        <button
+          onClick={() => {
+            this.auth.signOut();
+          }}
+          className="ui red google button"
+        >
+          <i className="google icon" />
+          Sing Out
+        </button>
+      );
     } else {
-      return <div>I am not singed in</div>;
+      return (
+        <button
+          onClick={() => {
+            this.auth.signIn();
+          }}
+          className="ui red google button"
+        >
+          <i className="google icon" />
+          Sing With Google
+        </button>
+      );
     }
   }
 
